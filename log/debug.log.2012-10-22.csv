@@ -1,0 +1,7 @@
+DATETIME,ERRORLEVEL,TAG,VALUE,LINE,FILE
+"2012-10-22 17:05:02",INFO,--,"Summary for collection type - newfromdate, 2 product/s found, 0 product/s tweeted this session, 2 product/s tweeted today - 2012-10-22.",502,/root/Dropbox/paj/www/dev/magento/tweetproducts/php/class.Application.php
+"2012-10-22 18:05:38",ERROR,--,"
+An error has occurred : Magento Mage.php not found in /home/www/dev/magentox/app/Mage.php. Please specify a valid Magento installation folder.
+",503,/root/Dropbox/paj/www/dev/magento/tweetproducts/php/class.Application.php
+"2012-10-22 18:12:19",INFO,--,"Summary for collection type - newfromdate, 2 product/s found, 0 product/s tweeted this session, 2 product/s tweeted today - 2012-10-22.",502,/root/Dropbox/paj/www/dev/magento/tweetproducts/php/class.Application.php
+"2012-10-22 18:12:34",INFO,--,"Summary for collection type - newfromdate, 2 product/s found, 1 product/s tweeted this session, 1 product/s tweeted today - 2012-10-22.",502,/root/Dropbox/paj/www/dev/magento/tweetproducts/php/class.Application.php
