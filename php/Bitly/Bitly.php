@@ -7,7 +7,7 @@
 */
 
 
-class BitlyURL
+class Application_Bitly
 {
 
 	protected $__;

@@ -24,7 +24,7 @@
  */
 
  
-class MagentoCollection extends Magento {
+class Application_Magento_Collection extends Application_Magento {
 
 
 

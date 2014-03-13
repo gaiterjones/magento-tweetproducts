@@ -1,0 +1,2 @@
+DATETIME,ERRORLEVEL,TAG,VALUE,LINE,FILE
+"2014-03-13 13:06:36",INFO,--,"Summary for collection type - newfromdate, 0 product/s found, 0 product/s tweeted this session, 0 product/s tweeted today - 2014-03-13.",514,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php

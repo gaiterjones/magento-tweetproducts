@@ -1,4 +1,4 @@
-Magento Product Tweet v0.5x
+Magento Product Tweet v0.6x
 
 Introduction
 Installation
@@ -23,13 +23,20 @@ Configuration
 
 Edit the file applicationConfig.php in /producttweet/config.
 
+Edit
+const userConfigurationFile='/home/www/...';
+
+With the path to your user configuration userConfig.ini ini file.
+
+Edit the file userConfig.ini :
+
 Edit 
-const PATH_TO_MAGENTO_INSTALLATION = '/home/www/dev/magento/';
+PATH_TO_MAGENTO_INSTALLATION = '/home/www/dev/magento/';
 
 With the actual path to your Magento installtion.
 
 Edit
-const FILE_CACHE_FOLDER = '/home/php/producttweet/cache/';
+FILE_CACHE_FOLDER = '/home/php/producttweet/cache/';
 
 With the full path to the producttweet cache folder.
 
@@ -41,13 +48,11 @@ tweetsPerSession - this is the number of products that will be Tweeted each time
 tweetHeadline - this is the prefix to the Tweet text.
 tweetFromHour - Time range to tweet between - from hour between 00 and 23
 tweetToHour - Time range to tweet between - to hour between 00 and 23
+tweetMedia - true/false true=attempt to tweet product image
 
 e.g. to only tweet between 0900 and 2200 set the From hour to 09 and the To hour to 23.
 
 useDecriptionText - set this to short or long to use either the short or long product description for the tweet text.
-
-
-
 
 Save the file.
 
@@ -108,6 +113,7 @@ If the script detects errors use the showtrace switch for more information and e
 
 
 PAJ 22.10.2012
+Updated March 2014 for new Twiiter API
 
 
 

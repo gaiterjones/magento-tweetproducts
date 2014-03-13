@@ -106,7 +106,7 @@ class Application
 			$this->set('notweet',false);			
 			$this->set('showtrace',false);
 			
-			$this->set('version','v0.58 26.10.2012');
+			$this->set('version','v0.6 12.04.2014');
 			
 			$_fileCacheFolder=$this->__config->get('FILE_CACHE_FOLDER');
 			$_mage=$this->__config->get('PATH_TO_MAGENTO_INSTALLATION'). 'app/Mage.php';
@@ -183,7 +183,8 @@ class Application
 				$_url=explode('?',$product->getProductUrl());
 				$_url=$_url[0];
 				$_id=$product->getId();
-				$_imageURL=$_imageBaseURL. $product->getImage();
+				$_imageURL=$this->get('imagebaseurl'). $product->getImage();
+				$_imageDir=$this->get('imagebasedir'). '/catalog/product'. $product->getImage();
 				$_productIsSaleable= $product->isSaleable();
 						
 				  
@@ -200,6 +201,8 @@ class Application
 						  "sku" => $_sku,
 						  "name" => $_name,
 						  "url" => $_url,
+						  "imageurl" => $_imageURL,
+						  "imagedir" => $_imageDir,
 						  "description" => $_descriptionText
 						  );
 						  
@@ -237,11 +240,9 @@ class Application
 			$_tweetFromHour=$this->__config->get('tweetFromHour');
 			$_tweetToHour=$this->__config->get('tweetToHour');
 			
-			// -- Load Twitter --
-			$_twitter=new Twitter();
-			
+	
 			// -- Load Bitly
-			$_bitly = new BitlyURL();
+			$_bitly = new Application_Bitly();
 			
 			// output header
 			$_output=$_output.$_crlf. '[Magento Product Tweet '. $this->get('version'). ']'. $_crlf. 'Session started - '. date("Y-m-d H:i:s").$_crlf.$_crlf.'[Search Results]'. $_crlf;
@@ -253,6 +254,10 @@ class Application
 				$_sku = $product['sku'];
 				$_name = $product['name'];
 				$_url = $product['url'];
+				
+				$_tweetMedia=false;
+				if ($this->__config->get('tweetMedia') && file_exists($product['imagedir'])) { $_tweetMedia = $product['imagedir']; }
+				
 				$_url = $_bitly->getBitlyURL($_url,$this->__config->get('bitlyLogin'),$this->__config->get('bitlyAPI'),$_fileCacheFolder);
 				
 				$_description = $product['description'];
@@ -262,7 +267,7 @@ class Application
 			  	$_output=$_output.'//-->'. $_crlf.
 			  						$_id.' - '. $_name.' / '. 
 			  						$_sku. $_crlf. $_tweetText.
-			  						' - '. strlen($_tweetText). $_crlf; // console output
+			  						' - '. strlen($_tweetText). $_crlf. ($_tweetMedia ? 'MEDIA -> '. $_tweetMedia : 'NO MEDIA'). $_crlf; // console output
 			  						
 			  	$_cachedFile = $_fileCacheFolder. $_currentDate. '-'. md5($_id.'_'.$_sku);
 			  	
@@ -284,14 +289,20 @@ class Application
 						  	// -- tweet
 						  	if (!$_notweet)
 						  	{
-							  		$_twitter->tweet($_tweetText);
+									// do tweet
+									$_twitter=new Application_Twitter_Tweet(array(
+										'tweetmaintext' => $_tweetText,
+										'tweetmedia' => $_tweetMedia,
+										'twitterusername' => $this->__config->get('twitterAccountName')));							  		
+
 							  		$_success=$_twitter->get('success');
 							  		$_accountverfiy=$_twitter->get('accountverify');
+									
 							  		if ($_success)
 							  		{
-								  		$_output=$_output. $_accountverfiy. ' - Tweet Success - '. date("Y-m-d H:i:s"). $_crlf;
+								  		$_output=$_output. $_accountverfiy. ' - Tweet Success ('. $_twitter->get('output'). ') - '. date("Y-m-d H:i:s"). $_crlf;
 							  		}	else {
-								  		$_output=$_output. $_accountverfiy. ' - Tweet Fail - '. date("Y-m-d H:i:s"). $_crlf;
+								  		$_output=$_output. $_accountverfiy. ' - Tweet Fail ('. $_twitter->get('output'). ') - '. date("Y-m-d H:i:s"). $_crlf;
 							  		}
 						  	}							
 						}
@@ -354,7 +365,7 @@ class Application
 		private function getProductCollection($_collectionType)
 		{
 			// -- Load Magento --
-			$_obj=new MagentoCollection();
+			$_obj=new Application_Magento_Collection();
 			
 			switch ($_collectionType)
 			{			
@@ -374,8 +385,10 @@ class Application
 			$_collection=$_obj->get('collection');
 			
 			$_imageBaseURL=$_obj->get('baseurlmedia'). 'catalog/product';
+			$_imageBaseDir=$_obj->get('basedirmedia');
 	
 			$this->set('imagebaseurl',$_imageBaseURL);
+			$this->set('imagebasedir',$_imageBaseDir);
 			$this->set('collection',$_collection);
 			
 			// -- Unload Magento

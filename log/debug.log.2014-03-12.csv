@@ -1,0 +1,26 @@
+DATETIME,ERRORLEVEL,TAG,VALUE,LINE,FILE
+"2014-03-12 07:59:18",ERROR,--,"
+An error has occurred : The file cache folder /root/Dropbox/paj/www/dev/magento/tweetproducts/cache/ is not writeable.
+",502,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:00:34",ERROR,--,"
+An error has occurred : The file cache folder /root/Dropbox/paj/www/dev/magento/tweetproducts/cache/ is not writeable.
+",502,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:02:01",ERROR,--,"
+An error has occurred : The file cache folder ~/Dropbox/paj/www/dev/git/magento-tweetproducts/cache/ is not writeable.
+",502,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:12:52",INFO,--,"Summary for collection type - newfromdate, 0 product/s found, 0 product/s tweeted this session, 0 product/s tweeted today - 2014-03-12.",501,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:14:10",INFO,--,"Summary for collection type - newfromdate, 0 product/s found, 0 product/s tweeted this session, 0 product/s tweeted today - 2014-03-12.",501,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:14:16",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 0 product/s tweeted today - 2014-03-12.",501,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:17:50",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 1 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",501,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:18:05",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",501,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:24:00",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",503,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:28:50",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",507,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:35:30",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",513,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:35:55",ERROR,--,"
+An error has occurred : Class variable tweetmaintext() cannot be empty.
+",514,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:37:04",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 1 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",514,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:42:54",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",514,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:45:45",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",514,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:47:16",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 0 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",514,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php
+"2014-03-12 08:47:55",INFO,--,"Summary for collection type - newfromdate, 1 product/s found, 1 product/s tweeted this session, 1 product/s tweeted today - 2014-03-12.",514,/root/Dropbox/paj/www/dev/git/magento-tweetproducts/php/Application.php

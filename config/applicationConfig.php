@@ -1,97 +1,103 @@
 <?php
-/*
+/**
+ *  
+ *  Copyright (C) 2014 paj@gaiterjones.com
+ *
+ *
+ *  @category   PAJ tweetproduct
+ * 	
+ *
+ */
 
 
-*/
+	
+/**
+ * config class.
+ -- application config
+ */
 
 // manual includes
-include './php/class.Application.php';
-include './php/class.Magento.php';
-include './php/class.MagentoCollection.php';
-include './php/class.Twitter.php';
-include './php/class.Bitly.php';
-include './php/class.Log.php';
+include './php/Application.php';
+include './php/Magento/Magento.php';
+include './php/Magento/Collection/Collection.php';
+include './php/Codebird/Codebird.php';
+include './php/Twitter/Connect/Connect.php';
+include './php/Twitter/Tweet/Tweet.php';
+include './php/Bitly/Bitly.php';
+include './php/Log/Log.php';
 
-
-	
 class config
 {
+// IMPORTANT!
+// specify the full path to your configuration file here
+	
+const userConfigurationFile='/home/www/dev/magentoTweetProductDevConfig.ini';
 
-// Edit configuration settings here
+// Edit configuration settings in INI file
 //
 //
-	// IMPORTANT!
-	// path to root magento installation folder
-	//
-	const PATH_TO_MAGENTO_INSTALLATION = '/home/www/dev/magento/';
-	
-	// IMPORTANT!
-	// path to file cacche folder, must be writeable by script
-	//
-	const FILE_CACHE_FOLDER = '/root/Dropbox/paj/www/dev/magento/tweetproducts/cache/';
-	
-	// IMPORTANT!
-	// twitter api authentication details
-	//
-	const twitterAccessToken = 	'231812876-VpS2u0nIBPQrbcmOuocmNqMaT6anRo48niK971ol';
-	const twitterAccessTokenSecret = 'TRmT5cvYr60ybCn58BkQ3KuoTeCfZVE8dNRVsyOffc';
-	const twitterConsumerKey = 'uD023YaNEMatnfDsm0tsw';
-	const twitterConsumerSecret = 	'h4xCJkC9SBhJMMoNIThwwLEXcc4Z6GhKUAgOqMau4o';
-	const twitterAccountName = 	'gaiterjones';
-	
-	// bitly short url api authentication details
-	//
-	const bitlyAPI = 'R_5bb2fcaffa4c3bdc35df3167eaf7b788';
-	const bitlyLogin = 'gaiterjones';
-	
-	// number of products to tweet per session
-	//
-	const tweetsPerSession = 	1;
-	
-	// headline for tweet
-	//
-	const tweetHeadline = 	'NEW TODAY!';
-	
-	// time range must be 00 through 23
-	// only tweet products within this time range
-	//
-	const tweetFromHour = '09';
-	const tweetToHour = '23';
-	
-	// text for product description
-	// short - for short descriptiont text
-	// long - for long description text
-	// default is short.
-	//
-	const useDecriptionText = 'short';
 
-	// collection type DO NOT CHANGE
-	//
-	const collectionType = 	'newfromdate';
 
 	public function __construct()
 	{
+		$this->loadUserConfiguration();
+	}
+	
+	protected function loadUserConfiguration()
+	{
+		
+		$_userConfigFile=self::userConfigurationFile;
+		
+		if (file_exists($_userConfigFile))
+		{
+		   $_settings=parse_ini_file($_userConfigFile,'application_settings');
+		} else {
+		    die('The requested user configuration file - '. $_userConfigFile. ' does not exist. Please check your configuration file and settings.');
+		}
+		
+		$_settings=$_settings['application_settings'];
+		
+		foreach ($_settings as $_setting => $_value)
+		{
+			if ($_value=='true')
+			{
+				$this->set($_setting,true);
+			} else if ($_value=='false') {
+				$this->set($_setting,false);
+			} else {
+				$this->set($_setting,$_value);
+			}
+		}
 
-	}
+	}	
 	
-    public function get($constant) {
+    public function get($variable) {
 	
-	    $constant = 'self::'. $constant;
-	
+	    $constant = 'self::'. $variable;
+	    
+	    // get constant if defines
 	    if(defined($constant)) {
+	    
 	        return constant($constant);
-	    }
-	    else {
-	        return false;
+	    
+	    } else {
+	    
+	    	// get array variable
+	    	if(isset($this->__[$variable])) {
+	        	return $this->__[$variable];
+	        } else {
+		        return false;
+	        }
+	        
 	    }
 	}
+	
+	public function set($key,$value)
+	{
+	    $this->__[$key] = $value;
+	}	
 
 	
 }
 
-//function autoloader($class) {
-//	require_once 'php/class.' . $class . '.php';
-//}
-
-//spl_autoload_register('autoloader');
 ?>

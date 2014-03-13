@@ -23,7 +23,7 @@
  *
  */
 
-class Magento
+class Application_Magento
 {
 
 	protected $__config;
@@ -51,7 +51,9 @@ class Magento
 		umask(0);
 		Mage::app()->loadArea(Mage_Core_Model_App_Area::AREA_FRONTEND);
 		$baseUrlMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+		$baseDirMedia = Mage::getBaseDir('media');
 		$this->set('baseurlmedia',$baseUrlMedia);
+		$this->set('basedirmedia',$baseDirMedia);
 	}
 	
 	
